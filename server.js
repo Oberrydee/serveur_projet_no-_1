@@ -1,4 +1,6 @@
 "use strict";
+/*
+//Test1
 // src/server.ts
 Object.defineProperty(exports, "__esModule", { value: true });
 //test 2
@@ -14,6 +16,14 @@ let io = require('socket.io')(http);
 //let fs = require('fs'); 
 //
 // simple '/' endpoint sending a Hello World response
+*/
+var express = require("express");
+var app = express();
+var server = require("http").createServer(app);
+var io = require("socket.io").listen(server.listen(process.env.PORT || 3200));
+require('events').EventEmitter.defaultMaxListeners = 10000;
+
+
 app.get('/', (req, res) => {
     //commented next: test to fix inde.html issue
     /*
@@ -42,9 +52,6 @@ io.on("connection", function (socket) {
 });
 // start our simple server up on localhost:3000
 // tslint:disable-next-line: only-arrow-functions
-const server = http.listen(3200, function () {
-    console.log('listenning on port 3200');
-});
 /*
 // src/server.ts
 //test 1
