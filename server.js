@@ -41,9 +41,14 @@ app.get('/', (req, res) => {
     // tslint:disable-next-line: quotemark
     //uncomment res.send if what is above does not work
     //res.send(path.resolve('client/index.html'));
-    res.send("Serveur projet noé");
+    //res.send("Serveur projet noé");
+    
+    //redirection on web
+    res.writeHead(301,
+    {Location: 'https://sleepy-taiga-76984.herokuapp.com/'}
+    );
 });
-io.on("connection", function (socket) {
+io.sockets.on("connection", function (socket) {
     console.log("a user connected");
     // whenever we receive a 'message' we log it out
     socket.on("message", function (message) {
